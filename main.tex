@@ -1,0 +1,150 @@
+\documentclass[aip,jcp,reprint,amsmath,amssymb,floatfix,citeautoscript,nofootinbib,onecolumn]{revtex4-2}
+%\documentclass[aps,prx,reprint,amsmath,amssymb,floatfix,citeautoscript,superscriptaddress]{revtex4-1}
+%\documentclass{article}
+\usepackage{cancel}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{dcolumn}% Align table columns on decimal point
+\newcolumntype{x}[1]{D{.}{.}{#1}}
+
+\usepackage{ragged2e}
+\usepackage{txfonts}
+\allowdisplaybreaks
+
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{myblue}{rgb}{0,0,1}
+\usepackage[breaklinks=true,colorlinks=true,linkcolor=myblue,urlcolor=myblue,citecolor=myblue]{hyperref}
+\newcommand{\red}[1]{{\color[rgb]{0.6,0,0}{#1}}}
+\newcommand{\green}[1]{{\color[rgb]{0,0.6,0}{#1}}}
+
+\newcommand{\vk}{{\bm{k}}}
+\newcommand{\vG}{{\bm{G}}}
+
+\begin{document}
+
+\section{CCSD}
+
+Defining some quantities
+
+ERIs, which notation?
+\begin{equation}
+    v^{pr}_{qs}=\left(pq|rs\right)
+\end{equation}
+
+\begin{equation}
+    w^{ij}_{ab}=2v^{ij}_{ab}-v^{ij}_{ba}
+\end{equation}
+
+CCSD energy equation
+\begin{equation}
+    E=\ev{He^{T_1+T_2}}{\Phi_0}
+\end{equation}
+
+\begin{equation}
+    E_\mathrm{CCSD} = 2\sum_{i,a}f^i_at^a_i+\sum_{i,j,a,b}w^{ij}_{ab}t^a_it^b_j+\sum_{i,j,a,b}w^{ij}_{ab}t^{ab}_{ij}
+\end{equation}
+
+Defining the $T_1$ transformed operators
+\begin{equation}
+    \hat{O}=e^{-T_1}Oe^{T_1}
+\end{equation}
+
+The CCSD amplitude equations with transformed operators
+\begin{gather}
+    \mel{\Phi^a_i}{\hat{H}+\left[\hat{H},T_2\right]}{\Phi_0}=0\\
+    \mel{\Phi^{ab}_{ij}}{\hat{H}+\left[\hat{H},T_2\right]+\frac{1}{2}\left[\left[\hat{H},T_2\right],T_2\right]}{\Phi_0}=0
+\end{gather}
+
+$T_1$ amplitude equation
+\begin{equation}
+    \begin{aligned}
+        0=&f^a_i-2\sum_{k,c}f^k_ct^a_kt^c_i+\sum_c\kappa^a_ct^c_i-\sum_k\kappa^k_it^a_k\\
+        &+\sum_{k,c}\kappa^k_c\left(2t^{ca}_{ki}-t^{ca}_{ik}\right)+\sum_{k,c}\kappa^k_ct^c_it^a_k+\sum_{k,c}w^{ak}_{ic}t^c_k\\
+        &+\sum_{k,c,d}w^{ak}_{cd}t^{cd}_{ik}+\sum_{k,c,d}w^{ak}_{cd}t^c_it^d_k-\sum_{k,l,c}w^{kl}_{ic}t^{ac}_{kl}\\
+        &-\sum_{k,l,c}w^{kl}_{ic}t^a_kt^c_l
+    \end{aligned}
+\end{equation}
+
+$T_2$ Amplitude Equations
+\begin{equation}
+    \begin{aligned}
+        0=&v^{ij}_{ab}+\sum_{k,l}\chi^{kl}_{ij}t^{ab}_{kl}+\sum_{k,l}\chi^{kl}_{ij}t^a_kt^b_l+\sum_{c,d}\chi^{ab}_{cd}t^{cd}_{ij}\\
+        &+\sum_{c,d}\chi^{ab}_{cd}t^c_it^d_j+P\sum_c\lambda^a_ct^{cb}_{ij}-P\sum_k\lambda^k_it^{ab}_{kj}\\
+        &+P\sum_c\left(v^{ab}_{ic}-\sum_kv^{kb}_{ic}t^a_k\right)t^c_j-P\sum_k\left(v^{ak}_{ij}+\sum_cv^{ak}_{ic}t^c_j\right)t^b_k\\
+        &+P\sum_{k,c}\left(2\chi^{ak}_{ic}-\chi^{ak}_{ci}\right)t^{cb}_{kj}-P\sum_{k,c}\chi^{ak}_{ic}t^{bc}_{kj}\\
+        &-P\sum_{k,c}\chi^{bk}_{ci}t^{ac}_{kj}
+    \end{aligned}
+\end{equation}
+
+Intermediates
+\begin{align}
+    \kappa^k_i=&f^k_i+\sum_{l,c,d}w^{kl}_{cd}t^{cd}_{il}+\sum_{l,c,d}w^{kl}_{cd}t^c_it^d_l\\
+    \kappa^a_c=&f^a_c-\sum_{k,l,d}w^{kl}_{cd}t^{ad}_{kl}-\sum_{k,l,d}w^{kl}_{cd}t^a_kt^d_l\\
+    \kappa^k_c=&f^k_c+\sum_{l,d}w^{kl}_{cd}t^d_l\\
+    \lambda^k_i=&\kappa^k_i+\sum_cf^k_ct^c_i+\sum_{l,c}w^{kl}_{ic}t^c_l\\
+    \lambda^a_c=&\kappa^a_c-\sum_kf^k_ct^a_k+\sum_{k,d}w^{ak}_{cd}t^d_k\\
+    \chi^{kl}_{ij}=&v^{kl}_{ij}+\sum_cv^{kl}_{ic}t^c_j+\sum_cv^{kl}_{cj}t^c_i+\sum_{c,d}v^{kl}_{cd}t^{cd}_{ij}+\sum_{l,d}v^{lk}_{dc}t^d_it^a_l\\
+    \chi^{ab}_{cd}=&v^{ab}_{cd}-\sum_kv^{ak}_{cd}t^b_k-\sum_kv^{kb}_{cd}t^a_k\\
+    \chi^{ak}_{ic}=&v^{ak}_{ic}-\sum_lv^{lk}_{ic}t^a_l+\sum_dv^{ak}_{dc}t^d_i-\frac{1}{2}\sum_{l,d}v^{lk}_{dc}t^{da}_{il}\\
+        &-\sum_{l,d}v^{lk}_{dc}t^d_it^a_l+\frac{1}{2}\sum_{l,d}w^{lk}_{dc}t^{ad}_{il}\notag\\
+    \chi^{ak}_{ci}=&v^{aj}_{ci}-\sum_lv^{lk}_{ci}t^a_l+\sum_dv^{ak}_{cd}t^d_i-\frac{1}{2}\sum_{l,d}v^{lk}_{cd}t^{da}_{il}\notag\\
+        &-\sum_{l,d}v^{lk}_{cd}t^d_it^a_l
+\end{align}
+
+\section{CC2}
+The doubles equations are approximated to first order.
+
+The CC2 doubles amplitude equations with transformed operators
+\begin{equation}
+    \mel{\Phi^{ab}_{ij}}{\left[F,T_2\right]+\hat{H}}{\Phi_0}=0
+\end{equation}
+Note that $F$ doesn't have a hat!
+
+Current implementation of $T_2$ amplitude equations
+\begin{equation}
+    \begin{aligned}
+        0=&v^{ij}_{ab}+\sum_{k,l}\chi^{kl}_{ij}t^a_kt^b_l+\sum_{c,d}\chi^{ab}_{cd}t^c_it^d_j+P\sum_c\lambda^a_ct^{cb}_{ij}-P\sum_k\lambda^k_it^{ab}_{kj}\\
+        &+P\sum_c\left(v^{ab}_{ic}-\sum_kv^{kb}_{ic}t^a_k\right)t^c_j-P\sum_k\left(v^{ak}_{ij}+\sum_cv^{ak}_{ic}t^c_j\right)t^b_k
+    \end{aligned}
+\end{equation}
+
+Intermediates
+\begin{align}
+    \kappa^k_i=&f^k_i\\
+    \kappa^a_c=&f^a_c\\
+    \lambda^k_i=&\kappa^k_i+\sum_cf^k_ct^c_i\\
+    \lambda^a_c=&\kappa^a_c-\sum_kf^k_ct^a_k\\
+    \chi^{kl}_{ij}=&v^{kl}_{ij}+\sum_cv^{kl}_{ic}t^c_j+\sum_cv^{kl}_{cj}t^c_i+\sum_{l,d}v^{lk}_{dc}t^d_it^a_l\\
+    \chi^{ab}_{cd}=&v^{ab}_{cd}-\sum_kv^{ak}_{cd}t^b_k-\sum_kv^{kb}_{cd}t^a_k\\
+\end{align}
+
+$T_1$ transform
+\begin{align}
+    X_{\alpha i}=&C_{\alpha i}\\
+    X_{\alpha a}=&C_{\alpha a}-\sum_iC_{\alpha i}t^a_i\\
+    Y_{\alpha i}=&C_{\alpha i}+\sum_aC_{\alpha a}t^a_i\\
+    Y_{\alpha a}=&C_{\alpha a}
+\end{align}
+
+$T_1$ transformed two-electron integral
+\begin{equation}
+    \hat{\left(pq|rs\right)}=\sum_{\mu\nu\lambda\sigma}X_{\mu p}Y_{\nu q}X_{\lambda r}Y_{\sigma s}\left(\mu\nu|\lambda\sigma\right)
+\end{equation}
+
+Doubles amplitude
+\begin{equation}
+    t^{ab}_{ij}=\frac{\hat{\left(ai|bj\right)}}{\varepsilon_i-\varepsilon_a+\varepsilon_j-\varepsilon_b}
+\end{equation}
+
+
+\begin{equation}
+    \expval{a^\dagger b}=\rho_{ab} = r_0\left[t^b_ml^m_a+\frac{1}{2}t^{eb}_{mn}l^{mn}_{ea}\right]
+\end{equation}
+
+\end{document}
