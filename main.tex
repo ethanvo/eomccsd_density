@@ -143,8 +143,83 @@ Doubles amplitude
 \end{equation}
 
 
+\section{EOMEE}
+Original Barlett Paper
 \begin{equation}
-    \expval{a^\dagger b}=\rho_{ab} = r_0\left[t^b_ml^m_a+\frac{1}{2}t^{eb}_{mn}l^{mn}_{ea}\right]
+	\expval{a^\dagger b}=\rho_{ab} = r_0\left[t^b_ml^m_a+\frac{1}{2}t^{eb}_{mn}l^{mn}_{ea}\right] + r^b_ml^m_a+\frac{1}{2}r^{eb}_{mn}l^{mn}_{ea} + t^b_nr^e_ml^{mn}_{ea}
 \end{equation}
 
+Krylov dervation
+\begin{equation}
+	\gamma_{ab}' = \frac{1}{2}P_+(ab)\left(\sum_il^a_i\tilde{\tilde{r}}_{ib}+\tilde{l}^{ab}+\sum_iY^1_{ia}t^b_i\right)
+\end{equation}
+
+\begin{equation}
+	\tilde{\tilde{r}}_{ib}=r^b_i+r_0t^b_i
+\end{equation}
+
+\begin{equation}
+	\tilde{l}^{ab} = \frac{1}{2}\sum_{ijc}l^{ac}_{ij}\tilde{\tilde{r}}^{bc}_{ij}
+\end{equation}
+
+\begin{equation}
+	\tilde{\tilde{r}}^{bc}_{ij} = r^{bc}_{ij}+r_0t^{bc}_{ij}
+\end{equation}
+
+\begin{equation}
+	\gamma_{ab}' = \frac{1}{2}P_+(ab)\left(\sum_il^a_ir^b_i+r_0l^a_it^b_i+\frac{1}{2}l^{ac}_{ij}r^{bc}_{ij}+\frac{1}{2}r_0l^{ac}_{ij}t^{bc}_{ij}+\sum_il^{ab}_{ij}r^b_jt^b_i\right)
+\end{equation}
+
+\begin{align}
+	\gamma_{ab}' &= \frac{1}{2}\left(\sum_il^a_ir^b_i+r_0l^a_it^b_i+\frac{1}{2}l^{ac}_{ij}r^{bc}_{ij}+\frac{1}{2}r_0l^{ac}_{ij}t^{bc}_{ij}+\sum_il^{ab}_{ij}r^b_jt^b_i\right) \\
+	&+\frac{1}{2}\left(\sum_il^b_ir^a_i+r_0l^b_it^a_i+\frac{1}{2}l^{bc}_{ij}r^{ac}_{ij}+\frac{1}{2}r_0l^{bc}_{ij}t^{ac}_{ij}+\sum_il^{ba}_{ij}r^a_jt^a_i\right)
+\end{align}
+
+\begin{equation}
+	Y^1_{ia} = \sum_{jb}l^{ab}_{ij}r^b_j
+\end{equation}
+
+\section{EOMIP}
+\begin{equation}
+	\gamma_{ab}'=\frac{1}{2}P_+(ab)\left(\tilde{l}^{ab}-\sum_iY^1_{ia}t^b_i\right)
+\end{equation}
+
+\begin{equation}
+	Y^1_{ia} = \sum_jl^a_{ij}r_j
+\end{equation}
+
+\begin{equation}
+	\tilde{l}^{ab} = \frac{1}{2}\sum_{ij}l^a_{ij}r^b_{ij}
+\end{equation}
+
+\begin{equation}
+	\gamma_{ab}'=\frac{1}{2}P_+(ab)\left(\frac{1}{2}\sum_{ij}l^a_{ij}r^b_{ij}-\sum_jl^a_{ij}r_jt^b_i\right)
+\end{equation}
+
+\begin{align}
+	\gamma_{ab}'&=\frac{1}{2}\left(\frac{1}{2}\sum_{ij}l^a_{ij}r^b_{ij}-\sum_{ij}l^a_{ij}r_jt^b_i\right) \\
+	&+\frac{1}{2}\left(\frac{1}{2}\sum_{ij}l^b_{ij}r^a_{ij}-\sum_{ij}l^b_{ij}r_jt^a_i\right)
+\end{align}
+
+\section{EOMEA}
+\begin{equation}
+	\gamma_{ab}'=\frac{1}{2}P_+(ab)\left(l^ar^b+\tilde{l}_{ab}\sum_kY^1_{ka}t^b_k\right)
+\end{equation}
+
+\begin{equation}
+	\tilde{l}_{ab} = \sum_{kc}l^{ac}_kr^{bc}_k
+\end{equation}
+
+\begin{equation}
+	Y^1_{ka}=\sum_cl^{ac}_kr^c
+\end{equation}
+
+\begin{equation}
+	\gamma_{ab}' = \frac{1}{2}P_+(ab)\left(\sum_il^ar^b+\frac{1}{2}l^{ac}_{i}r^{bc}_{i}+\sum_ml^{ac}_{k}r^ct^b_k\right)
+\end{equation}
+
+\begin{align}
+	\gamma_{ab}' &= \frac{1}{2}\left(\sum_il^ar^b+\frac{1}{2}l^{ac}_{i}r^{bc}_{i}+\sum_kl^{ac}_{k}r^ct^b_k\right) \\
+	&+\frac{1}{2}\left(\sum_il^br^a+\frac{1}{2}l^{bc}_ir^{ac}_i+\sum_il^{bc}_kr^ct^a_k\right)
+\end{align}
 \end{document}
